@@ -16,11 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var redInput: UITextField!
     @IBOutlet weak var greenInput: UITextField!
     @IBOutlet weak var blueInput: UITextField!
-    @IBOutlet weak var resultingColor: UILabel!
     @IBOutlet weak var inputButton: UIButton!
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    @IBOutlet weak var colorView: UIView!
     
     var redColor: Float = 0
     var greenColor: Float = 0
@@ -46,7 +46,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func redInputAction(_ sender: UITextField) {
@@ -90,7 +89,7 @@ class ViewController: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let position = touch.location(in: self.view)
-            resultingColor.center = CGPoint(x: position.x, y: position.y)
+            colorView.center = CGPoint(x: position.x, y: position.y)
         }
     }
     
@@ -109,9 +108,9 @@ class ViewController: UIViewController {
     }
     
     func changeDisplayColor(red: Float, green: Float, blue: Float)   {
-        let red = CGFloat(red/255)
-        let green = CGFloat(green/255)
-        let blue  = CGFloat(blue/255)
-        resultingColor.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        let red = CGFloat(red/100)
+        let green = CGFloat(green/100)
+        let blue  = CGFloat(blue/100)
+        colorView.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }
